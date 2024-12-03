@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: EmployeeMgmtApi
+    
+server:
+  port: 8080 
+  servlet:
+    context-path: /api/employee
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - metrics
+  endpoint:
+    metrics:
+      access: read-only
+    health:
+      show-details: always

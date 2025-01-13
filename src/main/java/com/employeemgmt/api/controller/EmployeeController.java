@@ -23,13 +23,13 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@PostMapping(value = "/create")
-	public void createEmployee(Employee employee) {
-		employeeService.createEmployee(employee);	
+	public String createEmployee(Employee employee) {
+		return employeeService.createEmployee(employee);	
 	}
 	
 	@GetMapping(value = "/checkHealth")
-	public void checkHealth() {
-		employeeService.checkDeptServiceHealth();	
+	public String checkHealth() {
+		return employeeService.checkDeptServiceHealth();	
 	}
 	
 }

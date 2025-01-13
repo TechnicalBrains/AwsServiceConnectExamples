@@ -26,16 +26,16 @@ public class EmployeeService {
 	Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 	
 	public String createEmployee(Employee employee) {
-		ResponseEntity<String> response = restTemplate.postForEntity("http://dept-mgm-svc-dns:8080/api/department/create",
+		ResponseEntity<String> response = restTemplate.postForEntity("http://department-mgmt-svc.sstechconnects:8080/api/department/create",
 				new HashMap<>(),String.class);
-		System.out.println(" Response Status Code :  "+response.getStatusCode().value());
-		System.out.println(" Response Body:  "+response.getBody());
+		logger.info(" Response Body : {} ", response.getBody());
+		logger.info(" Response Body : {} ", response.getStatusCode().value());
 		return response.getBody();
 	}
 	
 	public String checkDeptServiceHealth() {
-		String response = restTemplate.getForObject("http://dept-mgm-svc-dns:8080/api/department/actuator/health",String.class);
-		logger.info(" Response Status Code {}  ",response);
-		return response;
+		ResponseEntity<String> response = restTemplate.getForEntity("http://department-mgmt-svc.sstechconnects:8080/api/department/actuator/health",String.class);
+		logger.info(" Response Status Code {}  ",response.getStatusCode().value());
+		return response.getBody();
 	}
 }
